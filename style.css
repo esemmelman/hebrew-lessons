@@ -1,7 +1,8 @@
 :root {
   --bg: #f6f3ff;
   --panel: #ffffff;
-  --primary: #3d2c8d;
+  --primary: #193f35;
+  --hebrew-ink: #193f35;
   --secondary: #6d5ef3;
   --accent: #f7b267;
   --success: #2e8b57;
@@ -168,7 +169,7 @@ h2 {
   display: grid;
   min-height: 110px;
   place-items: center;
-  color: var(--primary);
+  color: var(--hebrew-ink);
   font-family: "Times New Roman", "David", "Noto Serif Hebrew", serif;
   font-size: clamp(4.5rem, 8vw, 7.5rem);
   font-weight: 400;
@@ -211,14 +212,28 @@ h2 {
   left: 28px;
 }
 
-.three-syllable-list,
-.four-syllable-list {
+.three-syllable-list {
   left: 44px;
 }
 
-.three-syllable-list .word-line,
-.four-syllable-list .word-line {
+.three-syllable-list .word-line {
   grid-template-columns: 42px repeat(3, minmax(180px, 1fr));
+}
+
+.four-syllable-list {
+  left: 100px;
+  align-items: flex-start;
+}
+
+.four-syllable-list .word-line {
+  grid-template-columns: 42px repeat(3, minmax(max-content, 1fr));
+  column-gap: 36px;
+  width: max-content;
+  min-width: 100%;
+}
+
+.four-syllable-list .hebrew-word {
+  white-space: nowrap;
 }
 
 .line-number {
@@ -231,10 +246,10 @@ h2 {
 }
 
 .hebrew-word {
-  color: var(--primary);
+  color: var(--hebrew-ink);
   font-family: "Times New Roman", "David", "Noto Serif Hebrew", serif;
   font-size: clamp(2.8rem, 4.5vw, 4.75rem);
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.05;
   text-align: center;
 }
@@ -301,7 +316,7 @@ h2 {
   font-family: "Times New Roman", "David", "Noto Serif Hebrew", serif;
   font-size: clamp(3.5rem, 5vw, 4.5rem);
   font-weight: 400;
-  color: var(--primary);
+  color: var(--hebrew-ink);
   line-height: 1;
   text-align: center;
 }
@@ -467,9 +482,17 @@ h2 {
     left: 0;
   }
 
-  .three-syllable-list .word-line,
-.four-syllable-list .word-line {
+  .three-syllable-list .word-line {
     grid-template-columns: 30px repeat(3, minmax(80px, 1fr));
+  }
+
+  #fourSyllableView {
+    overflow-x: auto;
+  }
+
+  .four-syllable-list .word-line {
+    grid-template-columns: 30px repeat(3, minmax(max-content, 1fr));
+    column-gap: 24px;
   }
 
   .topbar {
