@@ -6,9 +6,6 @@
     <meta name="application-version" content="1.9.1" />
     <link rel="canonical" href="https://esemmelman.github.io/hebrew-lessons/" />
     <title>Hebrew Vowel Match</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -25,9 +22,10 @@
             <div id="vowelsOption" class="lesson-option" role="option" aria-selected="false" data-view="vowels">Vowels - drag and drop</div>
             <div id="lettersOption" class="lesson-option" role="option" aria-selected="false" data-view="letters">Alphabet</div>
             <div id="letterVowelOption" class="lesson-option" role="option" aria-selected="false" data-view="letter-vowel">Letter and Vowel</div>
-            <div id="syllableOption" class="lesson-option" role="option" aria-selected="false" data-view="syllable">1 Syllable</div>
-            <div id="twoSyllableOption" class="lesson-option" role="option" aria-selected="false" data-view="two-syllables">2 Syllables</div>
-            <div id="threeSyllableOption" class="lesson-option" role="option" aria-selected="false" data-view="three-syllables">3 Syllables</div>
+            <div id="syllableOption" class="lesson-option" role="option" aria-selected="false" data-view="syllable">1&nbsp; Syllable</div>
+            <div id="twoSyllableOption" class="lesson-option" role="option" aria-selected="false" data-view="two-syllables">2&nbsp; Syllables</div>
+            <div id="threeSyllableOption" class="lesson-option" role="option" aria-selected="false" data-view="three-syllables">3&nbsp; Syllables</div>
+            <div id="fourSyllableOption" class="lesson-option" role="option" aria-selected="false" data-view="four-syllables">4&nbsp; Syllables</div>
           </div>
         </aside>
 
@@ -135,6 +133,10 @@
 
           <section id="threeSyllableView" class="lesson-view words-view" aria-labelledby="threeSyllableOption" hidden>
             <div id="threeSyllableList" class="word-list syllable-list three-syllable-list" aria-label="Three-syllable Hebrew words"></div>
+          </section>
+
+          <section id="fourSyllableView" class="lesson-view words-view" aria-labelledby="fourSyllableOption" hidden>
+            <div id="fourSyllableList" class="word-list syllable-list four-syllable-list" aria-label="Four-syllable Hebrew words"></div>
           </section>
 
         </div>

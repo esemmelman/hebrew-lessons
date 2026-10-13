@@ -22,6 +22,9 @@ const twoSyllableList = document.getElementById('twoSyllableList');
 const threeSyllableOption = document.getElementById('threeSyllableOption');
 const threeSyllableView = document.getElementById('threeSyllableView');
 const threeSyllableList = document.getElementById('threeSyllableList');
+const fourSyllableOption = document.getElementById('fourSyllableOption');
+const fourSyllableView = document.getElementById('fourSyllableView');
+const fourSyllableList = document.getElementById('fourSyllableList');
 const celebration = document.getElementById('celebration');
 
 let draggedCard = null;
@@ -99,12 +102,14 @@ function openVowels() {
   syllableOption.setAttribute('aria-selected', 'false');
   twoSyllableOption.setAttribute('aria-selected', 'false');
   threeSyllableOption.setAttribute('aria-selected', 'false');
+  fourSyllableOption.setAttribute('aria-selected', 'false');
   welcomeView.hidden = true;
   lettersView.hidden = true;
   letterVowelView.hidden = true;
   syllableView.hidden = true;
   twoSyllableView.hidden = true;
   threeSyllableView.hidden = true;
+  fourSyllableView.hidden = true;
   vowelsView.hidden = false;
   resetButton.hidden = false;
 }
@@ -161,12 +166,14 @@ function openLetters() {
   syllableOption.setAttribute('aria-selected', 'false');
   twoSyllableOption.setAttribute('aria-selected', 'false');
   threeSyllableOption.setAttribute('aria-selected', 'false');
+  fourSyllableOption.setAttribute('aria-selected', 'false');
   welcomeView.hidden = true;
   vowelsView.hidden = true;
   letterVowelView.hidden = true;
   syllableView.hidden = true;
   twoSyllableView.hidden = true;
   threeSyllableView.hidden = true;
+  fourSyllableView.hidden = true;
   lettersView.hidden = false;
   resetButton.hidden = true;
 }
@@ -211,12 +218,14 @@ function openLetterVowels() {
   syllableOption.setAttribute('aria-selected', 'false');
   twoSyllableOption.setAttribute('aria-selected', 'false');
   threeSyllableOption.setAttribute('aria-selected', 'false');
+  fourSyllableOption.setAttribute('aria-selected', 'false');
   welcomeView.hidden = true;
   vowelsView.hidden = true;
   lettersView.hidden = true;
   syllableView.hidden = true;
   twoSyllableView.hidden = true;
   threeSyllableView.hidden = true;
+  fourSyllableView.hidden = true;
   letterVowelView.hidden = false;
   resetButton.hidden = true;
 }
@@ -303,12 +312,14 @@ function openSyllables() {
   letterVowelOption.setAttribute('aria-selected', 'false');
   twoSyllableOption.setAttribute('aria-selected', 'false');
   threeSyllableOption.setAttribute('aria-selected', 'false');
+  fourSyllableOption.setAttribute('aria-selected', 'false');
   welcomeView.hidden = true;
   vowelsView.hidden = true;
   lettersView.hidden = true;
   letterVowelView.hidden = true;
   twoSyllableView.hidden = true;
   threeSyllableView.hidden = true;
+  fourSyllableView.hidden = true;
   syllableView.hidden = false;
   resetButton.hidden = true;
 }
@@ -391,6 +402,7 @@ function openTwoSyllables() {
 
   twoSyllableOption.setAttribute('aria-selected', 'true');
   threeSyllableOption.setAttribute('aria-selected', 'false');
+  fourSyllableOption.setAttribute('aria-selected', 'false');
   vowelsOption.setAttribute('aria-selected', 'false');
   lettersOption.setAttribute('aria-selected', 'false');
   letterVowelOption.setAttribute('aria-selected', 'false');
@@ -402,6 +414,7 @@ function openTwoSyllables() {
   syllableView.hidden = true;
   twoSyllableView.hidden = false;
   threeSyllableView.hidden = true;
+  fourSyllableView.hidden = true;
   resetButton.hidden = true;
 }
 
@@ -472,6 +485,8 @@ function openThreeSyllables() {
   });
 
   threeSyllableOption.setAttribute('aria-selected', 'true');
+  fourSyllableOption.setAttribute('aria-selected', 'false');
+  fourSyllableView.hidden = true;
   vowelsOption.setAttribute('aria-selected', 'false');
   lettersOption.setAttribute('aria-selected', 'false');
   letterVowelOption.setAttribute('aria-selected', 'false');
@@ -484,6 +499,61 @@ function openThreeSyllables() {
   syllableView.hidden = true;
   twoSyllableView.hidden = true;
   threeSyllableView.hidden = false;
+  resetButton.hidden = true;
+}
+
+function openFourSyllables() {
+  const wordLines = [
+    [
+      { hebrew: 'מְכוֹנִיּוֹת', english: 'cars' },
+      { hebrew: 'אֲנָנָסִים', english: 'pineapples' },
+      { hebrew: 'טֶלֶוִיזְיָה', english: 'television' }
+    ],
+    [
+      { hebrew: 'אוֹטוֹבּוּסִים', english: 'buses' },
+      { hebrew: 'טֶלֶפוֹנִים', english: 'telephones' },
+      { hebrew: 'אֲבוֹקָדוֹ', english: 'avocado' }
+    ],
+    [
+      { hebrew: 'מְלָפְפוֹן', english: 'cucumber' },
+      { hebrew: 'עַגְבָנִיּוֹת', english: 'tomatoes' },
+      { hebrew: 'סַפְרָנִיּוֹת', english: 'female librarians' }
+    ],
+    [
+      { hebrew: 'מְנַהֶלֶת', english: 'female manager' },
+      { hebrew: 'מְדַבֶּרֶת', english: 'speaks (feminine)' },
+      { hebrew: 'מְשַׂחֶקֶת', english: 'plays (feminine)' }
+    ]
+  ];
+
+  fourSyllableList.innerHTML = '';
+  wordLines.forEach((words, lineIndex) => {
+    const line = document.createElement('div');
+    line.className = 'word-line';
+    const number = document.createElement('span');
+    number.className = 'line-number';
+    number.textContent = `${lineIndex + 1}.`;
+    line.appendChild(number);
+    words.forEach((word) => {
+      const element = document.createElement('span');
+      element.className = 'hebrew-word';
+      element.lang = 'he';
+      element.dir = 'rtl';
+      element.textContent = word.hebrew;
+      element.setAttribute('aria-label', `${word.hebrew}, ${word.english}`);
+      element.title = word.english;
+      line.appendChild(element);
+    });
+    fourSyllableList.appendChild(line);
+  });
+
+  document.querySelectorAll('.lesson-option').forEach((option) => {
+    option.setAttribute('aria-selected', String(option === fourSyllableOption));
+  });
+  document.querySelectorAll('.lesson-view').forEach((view) => {
+    view.hidden = view !== fourSyllableView;
+  });
+  welcomeView.hidden = true;
   resetButton.hidden = true;
 }
 
@@ -635,11 +705,14 @@ letterVowelOption.addEventListener('click', openLetterVowels);
 syllableOption.addEventListener('click', openSyllables);
 twoSyllableOption.addEventListener('click', openTwoSyllables);
 threeSyllableOption.addEventListener('click', openThreeSyllables);
+fourSyllableOption.addEventListener('click', openFourSyllables);
 
 lessonList.addEventListener('keydown', (event) => {
   if (event.key === 'Enter' || event.key === ' ') {
     event.preventDefault();
-    if (threeSyllableOption.getAttribute('aria-selected') === 'true') {
+    if (fourSyllableOption.getAttribute('aria-selected') === 'true') {
+      openFourSyllables();
+    } else if (threeSyllableOption.getAttribute('aria-selected') === 'true') {
       openThreeSyllables();
     } else if (twoSyllableOption.getAttribute('aria-selected') === 'true') {
       openTwoSyllables();
@@ -665,11 +738,13 @@ lessonList.addEventListener('keydown', (event) => {
     } else if (twoSyllableOption.getAttribute('aria-selected') === 'true') {
       openThreeSyllables();
     } else {
-      openThreeSyllables();
+      openFourSyllables();
     }
   } else if (event.key === 'ArrowUp') {
     event.preventDefault();
-    if (threeSyllableOption.getAttribute('aria-selected') === 'true') {
+    if (fourSyllableOption.getAttribute('aria-selected') === 'true') {
+      openThreeSyllables();
+    } else if (threeSyllableOption.getAttribute('aria-selected') === 'true') {
       openTwoSyllables();
     } else if (twoSyllableOption.getAttribute('aria-selected') === 'true') {
       openSyllables();
