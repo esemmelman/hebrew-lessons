@@ -222,14 +222,20 @@ h2 {
 
 .four-syllable-list {
   left: 100px;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 42px repeat(3, minmax(max-content, 1fr));
+  column-gap: 36px;
+  align-content: start;
+  align-items: center;
+  direction: rtl;
+  width: max-content;
+  min-width: 100%;
 }
 
 .four-syllable-list .word-line {
-  grid-template-columns: 42px repeat(3, minmax(max-content, 1fr));
-  column-gap: 36px;
-  width: max-content;
-  min-width: 100%;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+  column-gap: inherit;
 }
 
 .four-syllable-list .hebrew-word {
@@ -490,7 +496,7 @@ h2 {
     overflow-x: auto;
   }
 
-  .four-syllable-list .word-line {
+  .four-syllable-list {
     grid-template-columns: 30px repeat(3, minmax(max-content, 1fr));
     column-gap: 24px;
   }
